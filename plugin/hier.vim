@@ -75,7 +75,7 @@ function! s:Hier(clearonly)
 
 				let lastcol = col([i.lnum, '$'])
 				if i.lnum > 0 && i.col
-					let c = (lastcol == i.col) ? i.col - 2 : i.col - 1
+					let c = (lastcol == i.col) ? max([0, i.col - 2]) : i.col - 1
 					call matchadd(hi_group, '\%'.i.lnum.'l\%>' . c . 'c\%<' . lastcol . 'c')
 				elseif i.lnum > 0
 					call matchadd(hi_group, '\%'.i.lnum.'l\%<' . lastcol . 'c')
